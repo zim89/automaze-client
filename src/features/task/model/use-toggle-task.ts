@@ -2,6 +2,7 @@
 
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'sonner'
+import { statKeys } from '@/entities/stat'
 import { type Task, tasksApi, tasksKeys } from '@/entities/task'
 import { logError } from '@/shared/utils'
 
@@ -79,6 +80,7 @@ export const useToggleTask = (options: UseToggleTaskOptions = {}) => {
     onSettled: () => {
       // Refetch to ensure we have the latest data
       queryClient.invalidateQueries({ queryKey: tasksKeys.root })
+      queryClient.invalidateQueries({ queryKey: statKeys.root })
 
       // Call settled callback
       options.onSettled?.()

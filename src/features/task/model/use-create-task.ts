@@ -2,6 +2,7 @@
 
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'sonner'
+import { statKeys } from '@/entities/stat'
 import {
   type CreateTaskDto,
   type Task,
@@ -38,6 +39,7 @@ export const useCreateTask = (options: UseCreateTaskOptions = {}) => {
 
       // Invalidate related queries
       queryClient.invalidateQueries({ queryKey: tasksKeys.root })
+      queryClient.invalidateQueries({ queryKey: statKeys.root })
 
       // Call success callback
       options.onSuccess?.(data)

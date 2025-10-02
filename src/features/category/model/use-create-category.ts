@@ -8,6 +8,8 @@ import {
   categoryApi,
   categoryKeys,
 } from '@/entities/category'
+import { statKeys } from '@/entities/stat'
+import { tasksKeys } from '@/entities/task'
 import { logError } from '@/shared/utils'
 
 interface UseCreateCategoryOptions {
@@ -38,6 +40,8 @@ export const useCreateCategory = (options: UseCreateCategoryOptions = {}) => {
 
       // Invalidate related queries
       queryClient.invalidateQueries({ queryKey: categoryKeys.root })
+      queryClient.invalidateQueries({ queryKey: tasksKeys.root })
+      queryClient.invalidateQueries({ queryKey: statKeys.root })
 
       // Call success callback
       options.onSuccess?.(data)

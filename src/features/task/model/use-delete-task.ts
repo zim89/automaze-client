@@ -2,6 +2,7 @@
 
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'sonner'
+import { statKeys } from '@/entities/stat'
 import { tasksApi, tasksKeys } from '@/entities/task'
 import { logError } from '@/shared/utils'
 
@@ -33,6 +34,7 @@ export const useDeleteTask = (options: UseDeleteTaskOptions = {}) => {
 
       // Invalidate related queries
       queryClient.invalidateQueries({ queryKey: tasksKeys.root })
+      queryClient.invalidateQueries({ queryKey: statKeys.root })
 
       // Call success callback
       options.onSuccess?.()
