@@ -2,6 +2,8 @@
 
 A modern task management web application built with Next.js using Feature-Sliced Design architecture.
 
+🌐 **Live Demo**: [https://automaze-tasks.vercel.app/](https://automaze-tasks.vercel.app/)
+
 ## 🚀 Key Features
 
 - **Task Management**: Create, edit, delete and track tasks with advanced filtering
